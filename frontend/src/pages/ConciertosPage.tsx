@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Calendar, MapPin, Megaphone } from 'lucide-react';
 import BackButton from "../components/BackButton";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 interface Concierto {
   id: number;
@@ -17,7 +18,7 @@ const ConciertosPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/conciertos')
+    fetch(`${API_BASE_URL}/api/conciertos`)
       .then(res => {
         if (!res.ok) throw new Error('Error al obtener conciertos');
         return res.json();
@@ -84,7 +85,7 @@ const ConciertosPage: React.FC = () => {
             </a>
           </div>
         )}
-      <BackButton />
+        <BackButton />
       </div>
     </div>
 

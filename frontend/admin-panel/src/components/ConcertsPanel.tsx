@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import ConcertForm from "./ConcertForm";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 function ConcertsPanel() {
   const [concerts, setConcerts] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [editingConcert, setEditingConcert] = useState(null);
 
   const fetchConcerts = async () => {
-    const res = await fetch("http://localhost:3000/api/conciertos", {
+    const res = await fetch(`${API_BASE_URL}/api/conciertos`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -21,7 +23,7 @@ function ConcertsPanel() {
   }, []);
 
   const handleDelete = async (id: number) => {
-    await fetch(`http://localhost:3000/api/conciertos/${id}`, {
+    await fetch(`${API_BASE_URL}/api/conciertos/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

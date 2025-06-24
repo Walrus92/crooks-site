@@ -30,5 +30,5 @@ app.use("/api/contact", contactoRouter);
 
 // Inicio del servidor
 app.listen(PORT, () => {
-  log(`Servidor corriendo en http://localhost:${PORT}`);
+  log(`Servidor corriendo en ${PORT}`);
 });

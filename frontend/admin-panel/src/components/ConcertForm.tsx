@@ -1,4 +1,5 @@
 import { useState } from "react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 function ConcertForm({ concert, onClose }: any) {
   const [form, setForm] = useState({
@@ -17,8 +18,8 @@ function ConcertForm({ concert, onClose }: any) {
 
     const method = concert ? "PUT" : "POST";
     const url = concert
-      ? `http://localhost:3000/api/conciertos/${concert.id}`
-      : "http://localhost:3000/api/conciertos";
+      ? `${API_BASE_URL}/api/conciertos/${concert.id}`
+      : `${API_BASE_URL}/api/conciertos`;
 
     await fetch(url, {
       method,

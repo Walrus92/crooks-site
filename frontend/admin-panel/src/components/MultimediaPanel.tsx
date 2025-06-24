@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 type Multimedia = {
   id: number;
   filename: string;
@@ -13,7 +15,7 @@ const MultimediaPanel = () => {
   const [multimedia, setMultimedia] = useState<Multimedia[]>([]);
 
   const cargarMultimedia = async () => {
-    const res = await fetch('http://localhost:3000/api/multimedia', {
+    const res = await fetch(`${API_BASE_URL}api/multimedia`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },
@@ -53,7 +55,7 @@ const MultimediaPanel = () => {
       formData.append('archivo', file);
     });
 
-    await fetch('http://localhost:3000/api/multimedia', {
+    await fetch(`${API_BASE_URL}/api/multimedia`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -66,7 +68,7 @@ const MultimediaPanel = () => {
   };
 
   const handleDelete = async (id: number) => {
-    await fetch(`http://localhost:3000/api/multimedia/${id}`, {
+    await fetch(`${API_BASE_URL}/api/multimedia/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -119,14 +121,14 @@ const MultimediaPanel = () => {
             </p>
             {item.mimetype.startsWith('image') ? (
               <img
-                src={`http://localhost:3000/uploads/${item.filename}`}
+                src={`${API_BASE_URL}/uploads/${item.filename}`}
                 alt={item.filename}
                 width={200}
               />
             ) : (
               <video width={300} controls>
                 <source
-                  src={`http://localhost:3000/uploads/${item.filename}`}
+                  src={`${API_BASE_URL}/uploads/${item.filename}`}
                   type={item.mimetype}
                 />
               </video>

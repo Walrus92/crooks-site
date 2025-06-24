@@ -1,11 +1,28 @@
-# Usa la imagen oficial de nginx ligera
+# Etapa 1: Build con Node.js
+FROM node:22-alpine AS build
+
+WORKDIR /app
+
+# Copiamos package.json y package-lock.json (o yarn.lock)
+COPY package*.json ./
+
+# Instalamos dependencias
+RUN npm ci
+
+# Copiamos el resto del código fuente
+COPY . .
+
+# Construimos la app (generará la carpeta dist)
+RUN npm run build
+
+# Etapa 2: Servir con nginx
 FROM nginx:alpine
 
-# Copia los archivos estáticos generados por vite al directorio que nginx sirve
-COPY dist /usr/share/nginx/html
+# Copiamos los archivos estáticos generados a la carpeta de nginx
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Exponemos el puerto 80 para que sea accesible fuera del contenedor
+# Exponemos el puerto 80
 EXPOSE 80
 
-# Comando para arrancar nginx en primer plano (modo producción)
+# Ejecutamos nginx en primer plano
 CMD ["nginx", "-g", "daemon off;"]
