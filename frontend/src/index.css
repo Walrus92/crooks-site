@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+@font-face {
+  font-family: 'Exorts';
+  src: url('/src/assets/fonts/exortscompressed-Bold.ttf') format('truetype');
+  font-weight: 400;  /* Regular */
+}
+
+@font-face {
+  font-family: 'Exorts';
+  src: url('/src/assets/fonts/exortscompressed-Black.ttf') format('truetype');
+  font-weight: 900;  /* Black */
+}
+
+
+.exorts {
+  font-family: 'Exorts', sans-serif;
+}
+
+.fixed-navbar {
+  @apply fixed top-0 left-0 w-full z-50 bg-black text-white shadow-md flex items-center justify-between px-4 py-2 transition-transform duration-500;
+}
+
+.video-section {
+  height: calc(100vh); /* si el navbar mide 72px, cámbialo si es otra altura exacta */
+}
+
+.section-header {
+  height: 3.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2rem;
+  font-family: 'Exorts', sans-serif;
+  font-weight: 800;
+  font-size: 3rem; /* similar a text-5xl */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1a1a1a;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.15);
+  user-select: none;
+  animation: fadeUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0; /* inicio para animar */
+  transform: translateY(20px);
+}
+
+/* Colores diferentes para cada sección, con degradado suave */
+.bio-header {
+  background: linear-gradient(90deg, #04B0C8cc, #038aafcc);
+}
+
+.conciertos-header {
+  background: linear-gradient(90deg, #C804B0cc, #a0028ccc);
+  color: #222222;
+}
+
+.multimedia-header {
+  background: linear-gradient(90deg, #B0C804cc, #8aa102cc);
+  color: #222222;
+}
+
+/* Animación fade up suave */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación ojos de crOOks */
+@keyframes flicker {
+  0%,
+  19%,
+  21%,
+  23%,
+  25%,
+  54%,
+  56%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 2px #048697, 0 0 4px #04B0C8;
+  }
+
+  20%,
+  22%,
+  24%,
+  55% {
+    opacity: 0.4;
+    text-shadow: none;
+  }
+
+  30%,
+  70% {
+    opacity: 0.7;
+    text-shadow: 0 0 1px #222e2f, 0 0 2px #253132;
+  }
+}
+.o-glitch {
+  display: inline-block;
+  animation: flicker 3s infinite;
+  color: #86b4b8; /* un cian apagado más suave */
+}
+
+@keyframes fadeInSlow {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInSlow {
+  animation: fadeInSlow 1.5s ease-out forwards;
+}
