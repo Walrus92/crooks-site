@@ -31,7 +31,7 @@ services:
     build:
       context: ./frontend/admin-panel
     env_file:
-      - ./frontend//admin-panel.env
+      - ./frontend/admin-panel/.env
     container_name: crooks-admin
     ports:
       - "3002:80"
