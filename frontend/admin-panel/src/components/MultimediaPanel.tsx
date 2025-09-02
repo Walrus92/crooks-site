@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 type Multimedia = {
   id: number;
@@ -15,7 +15,7 @@ const MultimediaPanel = () => {
   const [multimedia, setMultimedia] = useState<Multimedia[]>([]);
 
   const cargarMultimedia = async () => {
-    const res = await fetch(`${API_BASE_URL}api/multimedia`, {
+    const res = await fetch(`${API_BASE_URL}/api/multimedia`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       },

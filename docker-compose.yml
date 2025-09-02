@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   backend:
     build:
@@ -12,13 +10,13 @@ services:
     networks:
       - crooks-net
     volumes:
-      - crooks-sqlite-data:/app/prisma  # Monta la carpeta completa, no el archivo
+      - crooks-sqlite-data:/app/prisma
 
   frontend:
     build:
       context: ./frontend
     env_file:
-      - ./frontend/.env
+      - ./frontend/.env.docker
     container_name: crooks-frontend
     ports:
       - "3001:80"
@@ -31,7 +29,7 @@ services:
     build:
       context: ./frontend/admin-panel
     env_file:
-      - ./frontend/admin-panel/.env
+      - ./frontend/admin-panel/.env.docker
     container_name: crooks-admin
     ports:
       - "3002:80"

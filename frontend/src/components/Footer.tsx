@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaYoutube, FaTwitter, FaBandcamp } from "react-icons/fa";
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Footer = () => {
   const location = useLocation();
@@ -103,7 +103,6 @@ const Footer = () => {
 
           {/* Contenido */}
           <div className="relative z-20 h-full min-h-[520px] flex flex-col flex-1">
-            <h2 className="text-4xl font-bold mb-6 text-[#04B0C8] px-6">Síguenos</h2>
 
             <div className="flex-1 flex flex-col justify-center items-center text-center px-6">
               <p className="text-lg mb-10 font-medium max-w-sm">
