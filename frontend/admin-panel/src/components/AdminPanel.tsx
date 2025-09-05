@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ConcertsPanel from "./ConcertsPanel";
 import MultimediaPanel from "./MultimediaPanel";
+import MensajesPanel from "./MensajesPanel"; // nuevo
 
 function AdminPanel() {
-  const [view, setView] = useState<"concerts" | "media">("concerts");
+  const [view, setView] = useState<"concerts" | "media" | "mensajes">("concerts");
 
   return (
     <div className="p-6">
@@ -26,10 +27,19 @@ function AdminPanel() {
         >
           Multimedia
         </button>
+        <button
+          onClick={() => setView("mensajes")}
+          className={`px-4 py-2 rounded ${
+            view === "mensajes" ? "bg-blue-600 text-white" : "bg-gray-200"
+          }`}
+        >
+          Mensajes
+        </button>
       </div>
 
       {view === "concerts" && <ConcertsPanel />}
       {view === "media" && <MultimediaPanel />}
+      {view === "mensajes" && <MensajesPanel />} {/* nuevo */}
     </div>
   );
 }

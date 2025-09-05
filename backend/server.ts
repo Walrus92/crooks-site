@@ -8,6 +8,7 @@ import authRoutes from './routes/auth';
 import conciertosRoutes from './routes/conciertos';
 import multimediaRoutes from './routes/multimedia';
 import contactoRouter from "./routes/contacto";
+import mensajesRouter from "./routes/contactMessages";
 import { log } from './utils/logger';
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/conciertos', conciertosRoutes);
 app.use('/api/multimedia', multimediaRoutes);
 app.use("/api/contact", contactoRouter);
+app.use("/api/contact", mensajesRouter);
 
 // Inicio del servidor
 app.listen(PORT, () => {

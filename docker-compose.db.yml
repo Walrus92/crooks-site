@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:16
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"   # por defecto 5433 para evitar conflictos
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - crooksdb:/var/lib/postgresql/data
+
+volumes:
+  crooksdb:

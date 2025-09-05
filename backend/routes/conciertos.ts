@@ -5,6 +5,8 @@ import { authenticateAdmin } from '../middlewares/authMiddleware';
 const router = express.Router();
 const prisma = new PrismaClient();
 
+
+
 router.get('/', async (_req, res) => {
   const conciertos = await prisma.concierto.findMany({
     orderBy: { fecha: 'asc' },
