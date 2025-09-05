@@ -1,0 +1,43 @@
+[33mcommit c00e722627a2b6d463aa1ad0f8dbfeb3b1c783be[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Morzo <miguelmorci@gmail.com>
+Date:   Fri Sep 5 18:37:49 2025 +0200
+
+    first try: CI
+
+.env.db.example
+.github/workflows/build-backend.yml
+.gitignore
+backend/.env.example
+backend/.gitignore
+backend/Dockerfile
+backend/package.json
+backend/prisma/dev.db
+backend/prisma/migrations/20250902175512_add_contact_table/migration.sql
+backend/prisma/migrations/20250902175914_add_contact_table/migration.sql
+backend/prisma/schema.prisma
+backend/routes/conciertos.ts
+backend/routes/contactMessages.ts
+backend/server.ts
+backend/tsconfig.json
+backend/uploads/archivo-1750417903479-548116893.MP4
+backend/uploads/archivo-1750417903808-948310938.jpeg
+backend/uploads/archivo-1750417911951-814792953.jpeg
+backend/uploads/archivo-1750417911954-215925465.jpeg
+backend/uploads/archivo-1750417911959-493232918.jpeg
+backend/uploads/archivo-1750417911962-70958299.jpeg
+backend/uploads/archivo-1750417911964-19001056.jpeg
+backend/uploads/archivo-1750417911966-61309826.jpeg
+backend/uploads/archivo-1750417911969-451365408.jpeg
+backend/uploads/archivo-1750417911970-668781738.jpeg
+backend/uploads/archivo-1750417911972-410314285.jpeg
+backend/uploads/archivo-1750417911973-77751973.jpeg
+backend/uploads/archivo-1750417911975-196134124.jpeg
+backend/uploads/archivo-1750417911976-74078107.jpeg
+backend/uploads/archivo-1750417911978-992485269.jpeg
+docker-compose.db.yml
+frontend/.env.development
+frontend/.env.docker
+frontend/admin-panel/.env.development
+frontend/admin-panel/.env.docker
+frontend/admin-panel/src/components/AdminPanel.tsx
+frontend/admin-panel/src/components/MensajesPanel.tsx
