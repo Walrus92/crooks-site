@@ -2,27 +2,35 @@ name: Build & Push (Matrix)
 
 on:
   push:
-    branches: [ "main", "master" ]   # Solo publica en push
-  workflow_dispatch:                  # Botón manual
+    branches: [ "main", "master" ]   # publica SOLO en push
+  workflow_dispatch:                  # botón manual (también publica)
 
 permissions:
   contents: read
   packages: read
 
+concurrency:
+  group: docker-matrix-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    name: build (${{ matrix.service }})
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - service: backend
             context: backend
             dockerfile: backend/Dockerfile
             imagename: thecrooks-backend
+
           - service: frontend
             context: frontend
             dockerfile: frontend/Dockerfile
             imagename: thecrooks-frontend
+
           - service: admin
             context: frontend/admin-panel
             dockerfile: frontend/admin-panel/Dockerfile
@@ -30,6 +38,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      # DEBUG: lista el repo y las rutas críticas (verás esto en los logs)
+      - name: List repo layout
+        run: |
+          pwd
+          ls -la
+          echo "---- backend ----"
+          ls -la backend || true
+          echo "---- frontend ----"
+          ls -la frontend || true
+          echo "---- admin-panel ----"
+          ls -la frontend/admin-panel || true
+
       - uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
