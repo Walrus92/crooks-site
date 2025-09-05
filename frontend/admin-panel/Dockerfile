@@ -17,6 +17,7 @@ RUN npm run build
 
 # Etapa 2: Servir con nginx
 FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copiamos los archivos estáticos generados a la carpeta de nginx
 COPY --from=build /app/dist /usr/share/nginx/html
