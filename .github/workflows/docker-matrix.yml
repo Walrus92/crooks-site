@@ -24,8 +24,8 @@ jobs:
             dockerfile: frontend/Dockerfile
             imagename: thecrooks-frontend
           - service: admin
-            context: admin-panel
-            dockerfile: admin-panel/Dockerfile
+            context: frontend/admin-panel
+            dockerfile: frontend/admin-panel/Dockerfile
             imagename: thecrooks-admin
 
     steps:
